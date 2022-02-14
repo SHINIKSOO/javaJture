@@ -8,18 +8,18 @@ import org.junit.jupiter.api.function.Executable;
 public class CalculatorTest {
 
 
-    @Test
-    void testAdd(){
+  //  @Test
+   // void testAdd(){
         Calculator calculator = new Calculator();
-        int res = calculator.add(3,4);
+       // int res = calculator.add(3,4);
        // System.out.println(res);
-        Assertions.assertEquals(8,res);
-        org.assertj.core.api.Assertions.assertThat(res).isEqualTo(8);
+      //  Assertions.assertEquals(8,res);
+     //   org.assertj.core.api.Assertions.assertThat(res).isEqualTo(8);
 
         //AssertJ는 메소드 체이닝 방식
         //타입 체크도 가능하다.
         //Junit에 비해 가독성이 훨씬 좋아짐
-    }
+   // }
     @Disabled
     @Test
     void testMinus(){
