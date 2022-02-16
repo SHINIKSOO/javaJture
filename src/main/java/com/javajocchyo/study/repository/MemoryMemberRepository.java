@@ -3,8 +3,10 @@ package com.javajocchyo.study.repository;
 
 
 import com.javajocchyo.study.domain.Member;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
+
 
 public class MemoryMemberRepository implements MemberRepository {
 
@@ -44,4 +46,11 @@ public class MemoryMemberRepository implements MemberRepository {
        return new ArrayList<>(store.values());
 
     }
+
+    @Override
+    public void clearStore() {
+        store.clear();
+    }
+
+
 }
