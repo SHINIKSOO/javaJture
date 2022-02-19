@@ -6,8 +6,12 @@ package com.javajocchyo.study.domain;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
 @Getter @Setter
+@Component
 public class Member {
     //field(멤버변수)
     private Long id;

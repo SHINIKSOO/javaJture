@@ -2,9 +2,11 @@ package com.javajocchyo.study.repository;
 
 
 import com.javajocchyo.study.domain.Member;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
+
 
 public interface MemberRepository {
 
