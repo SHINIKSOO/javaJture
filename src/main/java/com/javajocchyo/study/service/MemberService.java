@@ -35,6 +35,7 @@ public class MemberService {
     @Autowired //생성자가 1개일때는 autowired 생략가능
     public MemberService(MemberRepository repository){
         this.repository = repository;
+        System.out.println(">>> repository =" + repository);
     }
 
 

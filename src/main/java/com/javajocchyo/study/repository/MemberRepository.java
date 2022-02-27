@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
-
+//인터페이스의 역할 : 규격,명세,스펙
 public interface MemberRepository {
 
     Member save(Member member);
@@ -17,5 +17,10 @@ public interface MemberRepository {
 
     List<Member> findAll();
 
-    void clearStore();
+    //java 1.8에 추가 된 것
+    //인터페이스 default, static
+    //Optional,Stream,Lambda
+
+
+
 }

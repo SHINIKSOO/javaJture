@@ -1,37 +1,47 @@
 package com.javajocchyo.study.service;
 
 import com.javajocchyo.study.domain.Member;
+import com.javajocchyo.study.repository.JdbcMemberRepository;
 import com.javajocchyo.study.repository.MemberRepository;
 import com.javajocchyo.study.repository.MemoryMemberRepository;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.*;
 
-//@SpringBootTest
+@SpringBootTest
+@Transactional
 class MemberServiceTest {
-//    @Autowired
-//    MemberService memberService;
-//    @Autowired
-//    MemoryMemberRepository repository;
 
-
-
-      MemoryMemberRepository repository = new MemoryMemberRepository();
-      MemberService memberService = new MemberService(repository);
+      @Autowired MemberService memberService;
 
 
 
     @BeforeEach
     void beforeEach(){
 
+        //repository = new JdbcMemberRepository();
+        //memberService  = new MemberService(repository);
 
-        repository.clearStore();
+    }
+
+    @AfterEach
+    void afterEach(){
+       // repository.clearStore();
+    }
+
+    @Test
+    void TestDI(){
+        System.out.println(">>>>>>memberservice ="+ memberService);
     }
 
 
@@ -52,6 +62,17 @@ class MemberServiceTest {
     @Test
     void 중복발생가입(){
         //숙제
+        Member member1 = new Member();
+        member1.setName("신익수2");
+        Member member2 = new Member();
+        member2.setName("신익수2");
+
+        Long joinedId = memberService.join(member1);
+        assertThatThrownBy( ()-> {memberService.join(member2);})
+                .isInstanceOf(Exception.class).hasMessageContaining("중복된 이름이 있습니다");
+
+
+       // Member findedMember = memberService.checkDuplicationName(joinedId);
     }
 
 
@@ -86,5 +107,17 @@ class MemberServiceTest {
          assertThat(res.getName()).isEqualTo(member1.getName());
      }
 
+     @Test
+     void testString(){
+        String str1= new String("abcde");
+        String str2 = str1;
+        String str3= "abcde"; //스트링 리터럴
+        String str4="abcde"; // 스트링 리터럴
+
+        assertThat(str1).isSameAs(str2);
+      //  assertThat(str3).isEqualTo(str4);
+
+        //Stringbuilder가 좋당~ !
+     }
 
 }

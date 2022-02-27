@@ -14,9 +14,15 @@ import org.springframework.stereotype.Component;
 @Component
 public class Member {
     //field(멤버변수)
-    private Long id;
+    private Long id; //primitive Type vs Wrapper Type
     private String name;
 
+    public Member() {
 
+    }
 
+    public Member(long l, String 익수다) {
+        id=l;
+        name =익수다;
+    }
 }

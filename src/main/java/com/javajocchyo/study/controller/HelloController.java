@@ -11,7 +11,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 //계층(Layer)관점 @Service @Repository @Controller
 
+/* Controller 데이터
 
+  @RequestParam
+  @PathVariable
+  @RequestBody
+  @ModelAttribute
+
+ */
 
 @RestController
 //싱글톤객체
