@@ -44,7 +44,7 @@ public class JdbcMemberRepository implements MemberRepository {
             close(conn, pstmt, rs);
         }
     }
-
+//  try with resources !
     @Override
     public Optional<Member> findById(Long id) {
         String sql = "select * from member where id = ?";

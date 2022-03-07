@@ -1,14 +1,21 @@
 package com.javajocchyo.study.config;
 
 
-import com.javajocchyo.study.repository.JdbcMemberRepository;
-import com.javajocchyo.study.repository.JdbcTemplateMemberRepository;
-import com.javajocchyo.study.repository.MemberRepository;
-import com.javajocchyo.study.repository.MemoryMemberRepository;
+import com.javajocchyo.study.domain.Member;
+import com.javajocchyo.study.repository.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.repository.query.FluentQuery;
 
+import javax.persistence.EntityManager;
 import javax.sql.DataSource;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
 
 
 //구현체 주입방식
@@ -26,10 +33,12 @@ import javax.sql.DataSource;
 @Configuration
 public class SpringConfig {
 
-    @Bean
-    public MemberRepository memberMemberRepository(DataSource dataSource){
+   // @Bean
+    public MemberRepository memberMemberRepository(EntityManager em){
     //return new JdbcMemberRepository(dataSource);
-        return new JdbcTemplateMemberRepository(dataSource);
+       // return new JdbcTemplateMemberRepository(dataSource);
+        return new JpaMemberRepository(em);
+
     }
 
 }
