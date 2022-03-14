@@ -6,7 +6,7 @@ public class Lecture2 {
 
 
     HashMap<Integer,String> hashMap;
-    p
+
 
 
     public static void main(String[] args){
